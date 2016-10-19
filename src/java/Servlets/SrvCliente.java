@@ -68,7 +68,7 @@ public class SrvCliente extends HttpServlet {
 "        <title>JSP Page</title>\n" +
 "        \n" +
 "        <!-- Latest compiled and minified CSS -->\n" +
-"        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">\n" +
+"        <link rel=\"stylesheet\" href=\"//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\" >\n" +
 "        <link rel=\"stylesheet\" href=\"https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css\" >\n" +
 "        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\n" +
 "\n" +
@@ -141,14 +141,13 @@ public class SrvCliente extends HttpServlet {
             }
             out.println("</tbody></table></div>");
             
-            out.println("<script src=\"//code.jquery.com/jquery-1.12.3.js\">"
-                    + "<script src=\"https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js\">"
-                    + "</script><script src=\"https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js\"></script>"
-                    
-                    + "<script>"
-                        + "$(document).ready(function() {\n" +
-                        "    $('#cliente').DataTable();\n" +
-                        "} );/script></body>");
+            out.println("<script src=\"//code.jquery.com/jquery-1.12.3.js\"></script>");
+            out.println("<script src=\"https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js\"></script>");
+            out.println("<script src=\"https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js\"></script>");
+            out.println("<script>\n"
+                        + "$(document).ready(function() { $('#cliente').DataTable();});\n"
+                    + "</script>"
+                    + "</body>");
             out.println("</html>");
             
         } catch (Exception ex) {
