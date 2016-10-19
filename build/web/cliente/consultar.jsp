@@ -4,7 +4,7 @@
     Author     : Wylianne
 --%>
 
-<%@page import="AcessoDados.AcessoTipoInstrumento"%>
+<%@page import="AcessoDados.AcessoCliente"%>
 <%@page import="java.io.IOException"%>
 <%@page import="Servlets.SrvLogin"%>
 <%@page import="java.util.logging.Logger"%>
@@ -17,11 +17,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
     <div style="margin-left: 10%; margin-right: 10%;">
-        <h1>Consulta de Tipo de Instrumento</h1><hr>
+        <h1>Consulta de Cliente</h1><hr>
             
-        <table id="instruments" align="center" width="100%" class="table table-striped table-bordered" >
-            <thead><tr><th>ID</th><th>Nome</th><th>Descriçao</th></tr></thead>
-                <tfoot><tr><th>ID</th><th>Nome</th><th>Descrição</th></tr></tfoot><tbody>
+        <table id="client" align="center" width="100%" class="table table-striped table-bordered" >
+            <thead><tr><th>ID</th><th>Nome</th><th>Telefone</th></tr></thead>
+                <tfoot><tr><th>ID</th><th>Nome</th><th>Telefone</th></tr></tfoot><tbody>
         <%
      
         
@@ -29,19 +29,19 @@
         
          try {
             ResultSet res;
-            AcessoTipoInstrumento instrumento = new AcessoTipoInstrumento();
+            AcessoCliente cliente = new AcessoCliente();
             int id = 0;
             String nome = "";
-            String descricao = "";
-            res = instrumento.Lista();
+            String telefone = "";
+            res = cliente.Lista();
 
             while (res.next()) {
                 id = res.getInt("id");
                 nome = res.getString("nome");
-                descricao = res.getString("descricao");
+                telefone = res.getString("telefone");
                 out.println("<tr><td>" + id
                         + "</td><td>" + nome 
-                        + "</td><td>" + descricao+"</tr>");
+                        + "</td><td>" + telefone+"</tr>");
             }          
             
         } catch (Exception ex) {
@@ -58,7 +58,7 @@
         
         <script>
             $(document).ready(function(){
-                $('#instruments').DataTable();});
+                $('#client').DataTable();});
         </script>
     </body>
 </html>

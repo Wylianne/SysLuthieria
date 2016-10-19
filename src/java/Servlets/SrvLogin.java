@@ -87,6 +87,7 @@ public class SrvLogin extends HttpServlet {
             out.println("<tr><td>ID</td><td>id_usuario</td><td>id_escola</td><td>dat_hor_login</td></tr>");
             res = login.Lista();
             
+           
                   res = login.Lista();
 
             while (res.next()) {
