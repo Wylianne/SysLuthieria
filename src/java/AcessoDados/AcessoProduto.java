@@ -30,7 +30,7 @@ public class AcessoProduto extends Conexao{
         try{
         
             getStmt();
-            resultado = stmt.executeQuery("SELECT * FROM produto");
+            resultado = stmt.executeQuery("SELECT * FROM PRODUTO");
             return resultado;
         }catch (Exception ex){
             System.out.println("SQLException: "+ ex.getMessage());
@@ -43,7 +43,7 @@ public class AcessoProduto extends Conexao{
 
         try{
             getStmt();
-            resultado = stmt.executeQuery("SELECT * FROM produto WHERE ID="+Codigo);
+            resultado = stmt.executeQuery("SELECT * FROM PRODUTO WHERE ID="+Codigo);
             return resultado;
         }catch (Exception ex){
             System.out.println("SQLException: "+ex.getMessage());

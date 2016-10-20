@@ -9,12 +9,11 @@
     
         <div style="margin-left: 10%; margin-right: 10%;">
             <h1>Cadastrar Produto</h1>
-            <hr>
-          
+            <hr>          
             <form name="formCadastrarProduto" method="post" action="../SrvProduto" >
                 Nome<em>*</em> <input class="form-control" name="nome" type="text" required /></br>
                 Marca<em>*</em> <input class="form-control" name="marca" type="text" required/></br>
-                <!--Valor<em>*</em> <input class="form-control" name="valor" type="number" required /></br>-->
+                Valor<em>*</em> <input class="form-control" name="valor" type="text" required /></br>
                 <hr>
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
             </form>

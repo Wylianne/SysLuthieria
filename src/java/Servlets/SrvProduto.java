@@ -14,11 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
 /**
  *
- * @author Victorcardoso
+ * @author Wylianne
  */
 public class SrvProduto extends HttpServlet {
 
@@ -33,7 +31,7 @@ public class SrvProduto extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
             /* TODO output your page here. You may use following sample code. */
@@ -49,7 +47,6 @@ public class SrvProduto extends HttpServlet {
         } finally {
             out.close();
         }
-       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -64,19 +61,34 @@ public class SrvProduto extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-         PrintWriter out = response.getWriter();
+        processRequest(request, response);
+    }
 
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
+        
         String nome, marca;
-        nome = new String(request.getParameter("nome").getBytes("ISO-8859-1"),"UTF-8");        
-        marca = new String(request.getParameter("marca").getBytes("ISO-8859-1"),"UTF-8");
-//        valor = new double(request.getParameter("valor").getBytes("ISO-8859-1"),"UTF-8");
-
+        double valor;
+        
+        nome = new String(request.getParameter("nome"));
+        marca = new String(request.getParameter("marca"));
+        valor = Double.parseDouble(request.getParameter("valor"));
         
         AcessoProduto con = new AcessoProduto();
+        
         try{
 
-            String sql = "INSERT INTO PRODUTO (nome, marca) VALUES('"+nome+"', '"+marca+"');";
+            String sql = "INSERT INTO PRODUTO (nome, marca, valor) VALUES('"+nome+"', '"+marca+"', "+valor+");";
             PreparedStatement stmt = (PreparedStatement) con.Conectar().prepareStatement(sql);
             
             
@@ -87,7 +99,6 @@ public class SrvProduto extends HttpServlet {
         }catch (Exception e){
             out.println(e);
         }
-
     }
 
     /**
