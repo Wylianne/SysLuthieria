@@ -50,7 +50,7 @@
                 out.println("<tr><td>" + id
                         + "</td><td>" + nome 
                          + "</td><td>" + marca
-                        + "</td><td>" + valor+"</tr>");
+                        + "</td><td>" + valor+"</td></tr>");
             }          
             
         } catch (Exception ex) {
