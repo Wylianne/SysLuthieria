@@ -55,7 +55,11 @@ public final class cadastrar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <title>JSP Page</title>\n");
-      out.write("        \n");
+      out.write("        <style>\n");
+      out.write("            td{\n");
+      out.write("                vertical-align: middle;\n");
+      out.write("            }\n");
+      out.write("        </style>\n");
       out.write("        <!-- Latest compiled and minified CSS -->\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">\n");
       out.write("        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\n");
@@ -68,6 +72,7 @@ public final class cadastrar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        \n");
       out.write("        <script src=\"//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\"></script>\n");
       out.write("        <script src=\"https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css\"></script>\n");
+      out.write("        \n");
       out.write("        \n");
       out.write("    </head>\n");
       out.write("    <body>\n");
@@ -139,8 +144,8 @@ public final class cadastrar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <h1>Cadastrar Instrumento</h1>\r\n");
       out.write("            <hr>\r\n");
       out.write("            <form name=\"formCadastrarCliente\" method=\"post\" action=\"../SrvInstrumento\" >\r\n");
-      out.write("                Tipo: <input class=\"form-control\" name=\"tipo\" type=\"text\"  /></br>\r\n");
-      out.write("                Descrição: <textarea class=\"form-control\" name=\"descricao\"></textarea>\r\n");
+      out.write("                Tipo<em>*</em> <input class=\"form-control\" name=\"tipo\" type=\"text\" minlength=\"4\" required /></br>\r\n");
+      out.write("                Descrição<em>*</em> <textarea class=\"form-control\" name=\"descricao\" required></textarea>\r\n");
       out.write("               \r\n");
       out.write("                <hr>\r\n");
       out.write("                <button type=\"submit\" class=\"btn btn-primary\">Cadastrar</button>\r\n");

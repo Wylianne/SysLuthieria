@@ -11,8 +11,8 @@
             <h1>Cadastrar Instrumento</h1>
             <hr>
             <form name="formCadastrarCliente" method="post" action="../SrvInstrumento" >
-                Tipo: <input class="form-control" name="tipo" type="text"  /></br>
-                Descrição: <textarea class="form-control" name="descricao"></textarea>
+                Tipo<em>*</em> <input class="form-control" name="tipo" type="text" minlength="4" required /></br>
+                Descrição<em>*</em> <textarea class="form-control" name="descricao" required></textarea>
                
                 <hr>
                 <button type="submit" class="btn btn-primary">Cadastrar</button>

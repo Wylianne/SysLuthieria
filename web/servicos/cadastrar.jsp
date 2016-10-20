@@ -10,11 +10,11 @@
             <h1>Cadastrar Serviços</h1>
             <hr>
           
-            <form name="formCadastrarCliente" method="post" action="response.jsp" >
-                Nome: <input class="form-control" name="nomeServico" type="text"  /></br>
-                Descrição: <textarea class="form-control" name="descricaoServico"></textarea>
-                Valor: <input class="form-control" name="valorServico" type="number"  /></br>
-                Prazo: <input class="form-control" name="prazoServico" type="number"  /></br>
+            <form name="formCadastrarCliente" method="post" action="../SrvServico" >
+                Nome: <input class="form-control" name="nomeServico" type="text" minlength="4" required /></br>
+                Descrição: <textarea class="form-control" name="descricaoServico" required ></textarea>
+                Valor: <input class="form-control" name="valorServico" type="number" required /></br>
+                Prazo: <input class="form-control" name="prazoServico" type="number" required /></br>
                 <hr>
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
             </form>

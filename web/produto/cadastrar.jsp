@@ -11,8 +11,8 @@
             <h1>Cadastrar Produto</h1>
             <hr>          
             <form name="formCadastrarProduto" method="post" action="../SrvProduto" >
-                Nome<em>*</em> <input class="form-control" name="nome" type="text" required /></br>
-                Marca<em>*</em> <input class="form-control" name="marca" type="text" required/></br>
+                Nome<em>*</em> <input class="form-control" name="nome" type="text" minlength="4" required /></br>
+                Marca<em>*</em> <input class="form-control" name="marca" type="text" minlength="4" required/></br>
                 Valor<em>*</em> <input class="form-control" name="valor" type="text" required /></br>
                 <hr>
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
