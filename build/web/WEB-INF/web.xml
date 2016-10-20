@@ -8,6 +8,10 @@
         <servlet-name>SrvCliente</servlet-name>
         <servlet-class>Servlets.SrvCliente</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SrvInstrumento</servlet-name>
+        <servlet-class>Servlets.SrvInstrumento</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SrvLogin</servlet-name>
         <url-pattern>/SrvLogin</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>SrvCliente</servlet-name>
         <url-pattern>/SrvCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SrvInstrumento</servlet-name>
+        <url-pattern>/SrvInstrumento</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

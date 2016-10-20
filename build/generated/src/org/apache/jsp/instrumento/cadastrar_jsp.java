@@ -1,18 +1,10 @@
-package org.apache.jsp.cliente;
+package org.apache.jsp.instrumento;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
-import AcessoDados.AcessoCliente;
-import java.io.IOException;
-import Servlets.SrvLogin;
-import java.util.logging.Logger;
-import java.util.logging.Level;
-import AcessoDados.AcessoLogin;
-import java.sql.ResultSet;
-import java.io.PrintWriter;
 
-public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class cadastrar_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -21,7 +13,7 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   static {
     _jspx_dependants = new java.util.ArrayList<String>(1);
-    _jspx_dependants.add("/cliente/../inc/header.html");
+    _jspx_dependants.add("/instrumento/../inc/header.html");
   }
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
@@ -54,28 +46,16 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write(" ");
       out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <title>JSP Page</title>\n");
-      out.write("        <style>\n");
-      out.write("            td{\n");
-      out.write("                vertical-align: middle;\n");
-      out.write("            }\n");
-      out.write("        </style>\n");
+      out.write("        \n");
       out.write("        <!-- Latest compiled and minified CSS -->\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">\n");
       out.write("        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\n");
@@ -88,7 +68,6 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        \n");
       out.write("        <script src=\"//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\"></script>\n");
       out.write("        <script src=\"https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css\"></script>\n");
-      out.write("        \n");
       out.write("        \n");
       out.write("    </head>\n");
       out.write("    <body>\n");
@@ -153,64 +132,22 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                $('#servico').addClass('active');\n");
       out.write("                            }\n");
       out.write("        </script>\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("    <div style=\"margin-left: 10%; margin-right: 10%;\">\n");
-      out.write("        <h1>Consulta de Cliente</h1><hr>\n");
-      out.write("            \n");
-      out.write("        <table id=\"client\" align=\"center\" width=\"100%\" class=\"table table-striped table-bordered\" >\n");
-      out.write("            <thead><tr><th>Nome</th><th>Telefone</th><th>Instrumentos</th><th>Editar</th></tr></thead>\n");
-      out.write("                <tfoot><tr><th>Nome</th><th>Telefone</th><th>Instrumentos</th><th>Editar</th></tr></tfoot><tbody>\n");
-      out.write("        ");
-
-     
-        
-         response.setContentType("text/html;charset=UTF-8");
-        
-         try {
-            ResultSet res;
-            AcessoCliente cliente = new AcessoCliente();
-            int id = 0;
-            String nome = "";
-            String telefone = "";
-            res = cliente.Lista();
-
-            while (res.next()) {
-                id = res.getInt("id");
-                nome = res.getString("nome");
-                telefone = res.getString("telefone");
-                out.println("<tr><td style='vertical-align: middle;'>" + nome
-                        + "</td><td style='vertical-align: middle;'>" +  telefone
-                        + "</td><td align='center'><form method='post' action='instrumento.jsp'><input type='hidden' value='"+id+"' name='id'>"
-                        + "<button type='submit' class='btn btn-default'><span class='glyphicon glyphicon-search'></span></button></form></td>"
-                        + "<td align='center'><form method='post' action='editar.jsp'><input type='hidden' value='"+id+"'>"
-                        + "<button type='submit' class='btn btn-default'><span class='glyphicon glyphicon-pencil'></span></button></form></td>"
-                        + "</tr>");
-            }          
-            
-        } catch (Exception ex) {
-            Logger.getLogger(SrvLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
-         
-      out.write("\n");
-      out.write("                    \n");
-      out.write("                    \n");
-      out.write("                        \n");
-      out.write("        </tbody></table></div>\n");
-      out.write("        <script src=\"//code.jquery.com/jquery-1.12.3.js\"></script>\n");
-      out.write("        <script src=\"https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js\"></script>\n");
-      out.write("        <script src=\"https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js\"></script>\n");
-      out.write("       \n");
-      out.write("        \n");
-      out.write("        \n");
-      out.write("        <script>\n");
-      out.write("            $(document).ready(function(){\n");
-      out.write("                $('#client').DataTable();});\n");
-      out.write("        </script>\n");
-      out.write("    </body>\n");
-      out.write("</html>\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write(" \r\n");
+      out.write("        <div style=\"margin-left: 10%; margin-right: 10%;\">\r\n");
+      out.write("            <h1>Cadastrar Instrumento</h1>\r\n");
+      out.write("            <hr>\r\n");
+      out.write("            <form name=\"formCadastrarCliente\" method=\"post\" action=\"../SrvInstrumento\" >\r\n");
+      out.write("                Tipo: <input class=\"form-control\" name=\"tipo\" type=\"text\"  /></br>\r\n");
+      out.write("                Descrição: <textarea class=\"form-control\" name=\"descricao\"></textarea>\r\n");
+      out.write("               \r\n");
+      out.write("                <hr>\r\n");
+      out.write("                <button type=\"submit\" class=\"btn btn-primary\">Cadastrar</button>\r\n");
+      out.write("            </form>\r\n");
+      out.write("        </div>\r\n");
+      out.write("    </body>\r\n");
+      out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

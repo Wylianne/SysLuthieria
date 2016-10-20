@@ -39,11 +39,11 @@
                 id = res.getInt("id");
                 nome = res.getString("nome");
                 telefone = res.getString("telefone");
-                out.println("<tr><td>" + nome
-                        + "</td><td>" +  telefone
-                        + "</td><td><form method='post' action='instrumento.jsp'><input type='hidden' value='"+id+"' name='id'>"
+                out.println("<tr><td style='vertical-align: middle;'>" + nome
+                        + "</td><td style='vertical-align: middle;'>" +  telefone
+                        + "</td><td align='center'><form method='post' action='instrumento.jsp'><input type='hidden' value='"+id+"' name='id'>"
                         + "<button type='submit' class='btn btn-default'><span class='glyphicon glyphicon-search'></span></button></form></td>"
-                        + "<td><form method='post' action='editar.jsp'><input type='hidden' value='"+id+"'>"
+                        + "<td align='center'><form method='post' action='editar.jsp'><input type='hidden' value='"+id+"'>"
                         + "<button type='submit' class='btn btn-default'><span class='glyphicon glyphicon-pencil'></span></button></form></td>"
                         + "</tr>");
             }          

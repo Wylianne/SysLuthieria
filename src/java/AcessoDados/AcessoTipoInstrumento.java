@@ -39,7 +39,7 @@ public class AcessoTipoInstrumento extends Conexao{
     }
     
     //BUSCA POR ID
-    public ResultSet BuscaExixtente(int Codigo) throws Exception{
+    public ResultSet BuscaExistente(int Codigo) throws Exception{
 
         try{
             getStmt();
@@ -50,6 +50,8 @@ public class AcessoTipoInstrumento extends Conexao{
             return null;
         }
     }
+
+   
 }
 
 

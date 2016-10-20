@@ -10,7 +10,7 @@
         <div style="margin-left: 10%; margin-right: 10%;">
             <h1>Cadastrar Instrumento</h1>
             <hr>
-            <form name="formCadastrarCliente" method="post" action="response.jsp" >
+            <form name="formCadastrarCliente" method="post" action="../SrvInstrumento" >
                 Tipo: <input class="form-control" name="tipo" type="text"  /></br>
                 Descrição: <textarea class="form-control" name="descricao"></textarea>
                

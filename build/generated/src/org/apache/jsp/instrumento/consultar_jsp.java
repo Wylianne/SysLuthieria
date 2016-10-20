@@ -71,7 +71,11 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <title>JSP Page</title>\n");
-      out.write("        \n");
+      out.write("        <style>\n");
+      out.write("            td{\n");
+      out.write("                vertical-align: middle;\n");
+      out.write("            }\n");
+      out.write("        </style>\n");
       out.write("        <!-- Latest compiled and minified CSS -->\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">\n");
       out.write("        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\n");
@@ -84,6 +88,7 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        \n");
       out.write("        <script src=\"//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\"></script>\n");
       out.write("        <script src=\"https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css\"></script>\n");
+      out.write("        \n");
       out.write("        \n");
       out.write("    </head>\n");
       out.write("    <body>\n");
@@ -98,7 +103,7 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <span class=\"caret\"></span></a>\n");
       out.write("                    <ul class=\"dropdown-menu\">\n");
       out.write("                      <li><a href=\"http://localhost:8080/SysLuthieria/cliente/cadastrar.jsp\">Cadastrar</a></li>\n");
-      out.write("                      <li><a href=\"http://localhost:8080/SysLuthieria/SrvCliente\">Consultar</a></li>\n");
+      out.write("                      <li><a href=\"http://localhost:8080/SysLuthieria/cliente/consultar.jsp\">Consultar</a></li>\n");
       out.write("                    </ul>\n");
       out.write("                </li>\n");
       out.write("                <li id=\"servico\" class=\"dropdown\">\n");
@@ -155,8 +160,8 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <h1>Consulta de Tipo de Instrumento</h1><hr>\n");
       out.write("            \n");
       out.write("        <table id=\"instruments\" align=\"center\" width=\"100%\" class=\"table table-striped table-bordered\" >\n");
-      out.write("            <thead><tr><th>ID</th><th>Nome</th><th>Descriçao</th></tr></thead>\n");
-      out.write("                <tfoot><tr><th>ID</th><th>Nome</th><th>Descrição</th></tr></tfoot><tbody>\n");
+      out.write("            <thead><tr><th>Nome</th><th>Descriçao</th><th>Editar</th></tr></thead>\n");
+      out.write("                <tfoot><tr><th>Nome</th><th>Descriçao</th><th>Editar</th></tr></tfoot><tbody>\n");
       out.write("        ");
 
      
@@ -175,9 +180,10 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
                 id = res.getInt("id");
                 nome = res.getString("nome");
                 descricao = res.getString("descricao");
-                out.println("<tr><td>" + id
-                        + "</td><td>" + nome 
-                        + "</td><td>" + descricao+"</tr>");
+                out.println("<tr><td style='vertical-align: middle;'>" + nome
+                        + "</td><td  style='vertical-align: middle;'>" + descricao 
+                        + "</td><td align='center'><form method='post' action='editar.jsp'><input type='hidden' value='"+id+"'>"
+                        + "<button type='submit' class='btn btn-default btn-mini'><span style='font-size:12px;' class='glyphicon glyphicon-pencil'></span></button></form></tr>");
             }          
             
         } catch (Exception ex) {
@@ -191,7 +197,7 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <script src=\"https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js\"></script>\n");
       out.write("        <script src=\"https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js\"></script>\n");
       out.write("       \n");
-      out.write("        \n");
+      out.write("       \n");
       out.write("        \n");
       out.write("        <script>\n");
       out.write("            $(document).ready(function(){\n");
