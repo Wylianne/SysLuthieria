@@ -3,7 +3,7 @@ package org.apache.jsp.cliente;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
-import AcessoDados.AcessoCliente;
+import AcessoDados.AcessoInstrumento;
 import java.io.IOException;
 import Servlets.SrvLogin;
 import java.util.logging.Logger;
@@ -12,7 +12,7 @@ import AcessoDados.AcessoLogin;
 import java.sql.ResultSet;
 import java.io.PrintWriter;
 
-public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class instrumento_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -154,7 +154,7 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <div style=\"margin-left: 10%; margin-right: 10%;\">\n");
       out.write("        <h1>Consulta de Cliente</h1><hr>\n");
       out.write("            \n");
-      out.write("        <table id=\"client\" align=\"center\" width=\"100%\" class=\"table table-striped table-bordered\" >\n");
+      out.write("        <table id=\"instrument\" align=\"center\" width=\"100%\" class=\"table table-striped table-bordered\" >\n");
       out.write("            <thead><tr><th>Nome</th><th>Telefone</th><th>Instrumentos</th><th>Editar</th></tr></thead>\n");
       out.write("                <tfoot><tr><th>Nome</th><th>Telefone</th><th>Instrumentos</th><th>Editar</th></tr></tfoot><tbody>\n");
       out.write("        ");
@@ -165,21 +165,29 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
         
          try {
             ResultSet res;
-            AcessoCliente cliente = new AcessoCliente();
-            int id = 0;
-            String nome = "";
-            String telefone = "";
-            res = cliente.Lista();
+            AcessoInstrumento instrumento = new AcessoInstrumento();
+            int id;
+            String cor;
+            int ano;
+            String marca;
+            int id_cliente;
+            String nome_instrumento;
+            
+            
+            int id_post = Integer.parseInt(request.getParameter("id"));
+            
+            res = instrumento.BuscaExistente(id_post);
 
             while (res.next()) {
                 id = res.getInt("id");
-                nome = res.getString("nome");
-                telefone = res.getString("telefone");
-                out.println("<tr><td>" + nome
-                        + "</td><td>" +  telefone
-                        + "</td><td><form method='post' action='instrumento.jsp'><input type='hidden' value='"+id+"' name='id'>"
-                        + "<button type='submit' class='btn btn-default'><span class='glyphicon glyphicon-search'></span></button></form></td>"
-                        + "<td><form method='post' action='editar.jsp'><input type='hidden' value='"+id+"'>"
+                cor = res.getString("cor");
+                marca = res.getString("marca");
+                nome_instrumento = res.getString("instrumento");
+                
+                out.println("<tr><td>" + nome_instrumento
+                        + "</td><td>" +  cor
+                        + "</td><td>"+ marca
+                        +"</td><td><form method='post' action='editar.jsp'><input type='hidden' value='"+id+"'>"
                         + "<button type='submit' class='btn btn-default'><span class='glyphicon glyphicon-pencil'></span></button></form></td>"
                         + "</tr>");
             }          
@@ -202,7 +210,7 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        \n");
       out.write("        <script>\n");
       out.write("            $(document).ready(function(){\n");
-      out.write("                $('#client').DataTable();});\n");
+      out.write("                $('#instrument').DataTable();});\n");
       out.write("        </script>\n");
       out.write("    </body>\n");
       out.write("</html>\n");

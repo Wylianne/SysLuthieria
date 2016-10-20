@@ -1,16 +1,16 @@
 SMAP
-consultar_jsp.java
+instrumento_jsp.java
 JSP
 *S JSP
 *F
-+ 0 consultar.jsp
-cliente/consultar.jsp
++ 0 instrumento.jsp
+cliente/instrumento.jsp
 + 1 header.html
 cliente/../inc/header.html
 *L
 5,12:57
 1#1,84:68
 16#0,10:151
-28,28:164
-55,18:192
+28,36:164
+63,18:200
 *E

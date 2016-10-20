@@ -4,7 +4,7 @@
     Author     : Wylianne
 --%>
 
-<%@page import="AcessoDados.AcessoCliente"%>
+<%@page import="AcessoDados.AcessoInstrumento"%>
 <%@page import="java.io.IOException"%>
 <%@page import="Servlets.SrvLogin"%>
 <%@page import="java.util.logging.Logger"%>
@@ -19,7 +19,7 @@
     <div style="margin-left: 10%; margin-right: 10%;">
         <h1>Consulta de Cliente</h1><hr>
             
-        <table id="client" align="center" width="100%" class="table table-striped table-bordered" >
+        <table id="instrument" align="center" width="100%" class="table table-striped table-bordered" >
             <thead><tr><th>Nome</th><th>Telefone</th><th>Instrumentos</th><th>Editar</th></tr></thead>
                 <tfoot><tr><th>Nome</th><th>Telefone</th><th>Instrumentos</th><th>Editar</th></tr></tfoot><tbody>
         <%
@@ -29,21 +29,29 @@
         
          try {
             ResultSet res;
-            AcessoCliente cliente = new AcessoCliente();
-            int id = 0;
-            String nome = "";
-            String telefone = "";
-            res = cliente.Lista();
+            AcessoInstrumento instrumento = new AcessoInstrumento();
+            int id;
+            String cor;
+            int ano;
+            String marca;
+            int id_cliente;
+            String nome_instrumento;
+            
+            
+            int id_post = Integer.parseInt(request.getParameter("id"));
+            
+            res = instrumento.BuscaExistente(id_post);
 
             while (res.next()) {
                 id = res.getInt("id");
-                nome = res.getString("nome");
-                telefone = res.getString("telefone");
-                out.println("<tr><td>" + nome
-                        + "</td><td>" +  telefone
-                        + "</td><td><form method='post' action='instrumento.jsp'><input type='hidden' value='"+id+"' name='id'>"
-                        + "<button type='submit' class='btn btn-default'><span class='glyphicon glyphicon-search'></span></button></form></td>"
-                        + "<td><form method='post' action='editar.jsp'><input type='hidden' value='"+id+"'>"
+                cor = res.getString("cor");
+                marca = res.getString("marca");
+                nome_instrumento = res.getString("instrumento");
+                
+                out.println("<tr><td>" + nome_instrumento
+                        + "</td><td>" +  cor
+                        + "</td><td>"+ marca
+                        +"</td><td><form method='post' action='editar.jsp'><input type='hidden' value='"+id+"'>"
                         + "<button type='submit' class='btn btn-default'><span class='glyphicon glyphicon-pencil'></span></button></form></td>"
                         + "</tr>");
             }          
@@ -65,7 +73,7 @@
         
         <script>
             $(document).ready(function(){
-                $('#client').DataTable();});
+                $('#instrument').DataTable();});
         </script>
     </body>
 </html>

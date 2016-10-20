@@ -20,8 +20,8 @@
         <h1>Consulta de Cliente</h1><hr>
             
         <table id="client" align="center" width="100%" class="table table-striped table-bordered" >
-            <thead><tr><th>ID</th><th>Nome</th><th>Telefone</th></tr></thead>
-                <tfoot><tr><th>ID</th><th>Nome</th><th>Telefone</th></tr></tfoot><tbody>
+            <thead><tr><th>Nome</th><th>Telefone</th><th>Instrumentos</th><th>Editar</th></tr></thead>
+                <tfoot><tr><th>Nome</th><th>Telefone</th><th>Instrumentos</th><th>Editar</th></tr></tfoot><tbody>
         <%
      
         
@@ -39,9 +39,13 @@
                 id = res.getInt("id");
                 nome = res.getString("nome");
                 telefone = res.getString("telefone");
-                out.println("<tr><td>" + id
-                        + "</td><td>" + nome 
-                        + "</td><td>" + telefone+"</tr>");
+                out.println("<tr><td>" + nome
+                        + "</td><td>" +  telefone
+                        + "</td><td><form method='post' action='instrumento.jsp'><input type='hidden' value='"+id+"' name='id'>"
+                        + "<button type='submit' class='btn btn-default'><span class='glyphicon glyphicon-search'></span></button></form></td>"
+                        + "<td><form method='post' action='editar.jsp'><input type='hidden' value='"+id+"'>"
+                        + "<button type='submit' class='btn btn-default'><span class='glyphicon glyphicon-pencil'></span></button></form></td>"
+                        + "</tr>");
             }          
             
         } catch (Exception ex) {
@@ -49,6 +53,9 @@
         }
     
          %>
+                    
+                    
+                        
         </tbody></table></div>
         <script src="//code.jquery.com/jquery-1.12.3.js"></script>
         <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
