@@ -15,13 +15,19 @@
 
 <%@include file="../inc/header.html" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
- 
-    <div style="margin-left: 10%; margin-right: 10%;">
-        <h1>Lista de Produtos</h1><hr>
-              <table id="product" align="center" width="100%" class="table table-striped table-bordered" >
-                <thead><tr><th>ID</th><th>Nome</th><th>Marca</th><th>Valor</th></tr></thead>
-                    <tfoot><tr><th>ID</th><th>Nome</th><th>Marca</th><th>Valor</th></tr></tfoot><tbody>
-                
+    
+        <div class="container">
+              <h1>Lista de Produtos</h1>
+                <table border="1" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>Marca</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     <%
      
         
@@ -61,7 +67,7 @@
         
         <script>
             $(document).ready(function(){
-                $('#product').DataTable();});
+                $('#client').DataTable();});
         </script>
 
        
