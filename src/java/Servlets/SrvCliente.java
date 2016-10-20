@@ -170,19 +170,27 @@ public class SrvCliente extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         String nome, telefone;
-      
+        int id_post = 0;
         
         nome = request.getParameter("nome");
         telefone = request.getParameter("telefone");
-      
+        
+        if (request.getParameter("id_post") != null){
+            id_post = Integer.parseInt(request.getParameter("id_post"));
+        }
+        
         
         AcessoCliente con = new AcessoCliente();
-        
+        String sql= "";
         try{
-
-            String sql = "INSERT INTO CLIENTE (nome, telefone) VALUES('"+nome+"', '"+telefone+"')";
-            PreparedStatement stmt = (PreparedStatement) con.Conectar().prepareStatement(sql);
+            if(id_post > 0){
+                sql = "UPDATE CLIENTE SET nome = '"+nome+"', telefone = '"+telefone+"' WHERE id = "+id_post+";";
+            }else{
+                sql = "INSERT INTO CLIENTE (nome, telefone) VALUES('"+nome+"', '"+telefone+"')";
+            }
             
+            
+            PreparedStatement stmt = (PreparedStatement) con.Conectar().prepareStatement(sql);
             stmt.execute();
             
             response.sendRedirect("cliente/consultar.jsp"); 

@@ -184,7 +184,7 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
                         + "</td><td style='vertical-align: middle;'>" +  telefone
                         + "</td><td align='center'><form method='post' action='instrumento.jsp'><input type='hidden' value='"+id+"' name='id'>"
                         + "<button type='submit' class='btn btn-default'><span class='glyphicon glyphicon-search'></span></button></form></td>"
-                        + "<td align='center'><form method='post' action='editar.jsp'><input type='hidden' value='"+id+"'>"
+                        + "<td align='center'><form method='post' action='editar.jsp'><input type='hidden' value='"+id+"' name='id_post'>"
                         + "<button type='submit' class='btn btn-default'><span class='glyphicon glyphicon-pencil'></span></button></form></td>"
                         + "</tr>");
             }          
