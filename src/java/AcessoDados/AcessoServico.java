@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class AcessoServico extends Conexao{
     private int id;
     private String nome;
-    private String Descrição;
+    private String descricao;
     private double valor;
     private int prazo;
     private ResultSet resultado;

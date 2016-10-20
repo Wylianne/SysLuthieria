@@ -16,6 +16,10 @@
         <servlet-name>SrvProduto</servlet-name>
         <servlet-class>Servlets.SrvProduto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SrvServico</servlet-name>
+        <servlet-class>Servlets.SrvServico</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SrvLogin</servlet-name>
         <url-pattern>/SrvLogin</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>SrvProduto</servlet-name>
         <url-pattern>/SrvProduto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SrvServico</servlet-name>
+        <url-pattern>/SrvServico</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

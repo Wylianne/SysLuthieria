@@ -11,10 +11,10 @@
             <hr>
           
             <form name="formCadastrarCliente" method="post" action="../SrvServico" >
-                Nome: <input class="form-control" name="nomeServico" type="text" minlength="4" required /></br>
-                Descrição: <textarea class="form-control" name="descricaoServico" required ></textarea>
-                Valor: <input class="form-control" name="valorServico" type="tel" title="Ex.: 1999.00" pattern="[0-9]{1,5}.[0-9]{2}$" required /></br>
-                Prazo: <input class="form-control" name="prazoServico" type="tel" pattern="[0-9]+$" required /></br>
+                Nome: <input class="form-control" name="nome" type="text" minlength="4" required /></br>
+                Descrição: <textarea class="form-control" name="descricao" required ></textarea>
+                Valor: <input class="form-control" name="valor" type="tel" title="Ex.: 1999.00" pattern="[0-9]{1,5}.[0-9]{2}$" required /></br>
+                Prazo: <input class="form-control" name="prazo" type="tel" pattern="[0-9]+$" required /></br>
                 <hr>
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
             </form>
