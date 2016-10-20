@@ -4,6 +4,15 @@
     Author     : victorcardoso
 --%>
 
+<%@page import="AcessoDados.AcessoProduto"%>
+<%@page import="java.io.IOException"%>
+<%@page import="Servlets.SrvLogin"%>
+<%@page import="java.util.logging.Logger"%>
+<%@page import="java.util.logging.Level"%>
+<%@page import="AcessoDados.AcessoLogin"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.io.PrintWriter"%>
+
 <%@include file="../inc/header.html" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
     
@@ -12,22 +21,56 @@
                 <table border="1" class="table table-bordered">
                     <thead>
                         <tr>
+                            <th>Id</th>
                             <th>Nome</th>
                             <th>Marca</th>
                             <th>Valor</th>
                         </tr>
                     </thead>
                     <tbody>
-                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>    
+                    <%
+     
+        
+         response.setContentType("text/html;charset=UTF-8");
+        
+         try {
+            ResultSet res;
+            AcessoProduto produto = new AcessoProduto();
+            int id = 0;
+            String nome = "";
+            String marca = "";
+            double valor = 0;
+            res = produto.Lista();
 
-                </table> 
+            while (res.next()) {
+                id = res.getInt("id");
+                nome = res.getString("nome");
+                marca = res.getString("marca");
+                valor = res.getDouble("valor");
+                out.println("<tr><td>" + id
+                        + "</td><td>" + nome 
+                         + "</td><td>" + marca
+                        + "</td><td>" + valor+"</tr>");
+            }          
+            
+        } catch (Exception ex) {
+            Logger.getLogger(SrvLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+         %>
+        </tbody></table></div>
+        <script src="//code.jquery.com/jquery-1.12.3.js"></script>
+        <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+       
+        
+        
+        <script>
+            $(document).ready(function(){
+                $('#client').DataTable();});
+        </script>
 
-        </div>
+       
         
     </body>
 </html>
