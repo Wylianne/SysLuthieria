@@ -1,0 +1,16 @@
+SMAP
+consultar_jsp.java
+JSP
+*S JSP
+*F
++ 0 consultar.jsp
+produto/consultar.jsp
++ 1 header.html
+produto/../inc/header.html
+*L
+5,12:57
+1#1,84:68
+16#0,10:151
+28,27:164
+54,18:191
+*E
