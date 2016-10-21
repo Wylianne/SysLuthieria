@@ -21,10 +21,14 @@
                 vertical-align: middle;
             }
             
-            .excluir:hover, .excluir:focus, .excluir:active, .excluir.active, .open>.dropdown-toggle.excluir  {
+            .excluir{
+               /*color: #000;*/
+               background: transparent;
+            }
+            .excluir:hover   {               
+                background-image: linear-gradient(to bottom, #ea0000, #ff1414);
+                border-color: #ea0000; /*set the color you want here*/
                 color: #000;
-                background-color: red;
-                border-color: red; /*set the color you want here*/
             }
         </style>
         
@@ -48,8 +52,8 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Serviços
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="http://localhost:8080/SysLuthieria/servicos/cadastrar.jsp">Cadastrar</a></li>
-                      <li><a href="http://localhost:8080/SysLuthieria/servicos/consultar.jsp">Consultar</a></li>
+                      <li><a href="http://localhost:8080/SysLuthieria/servico/cadastrar.jsp">Cadastrar</a></li>
+                      <li><a href="http://localhost:8080/SysLuthieria/servico/consultar.jsp">Consultar</a></li>
                     </ul>
                 </li>
                 <li id="produto" class="dropdown">
@@ -64,8 +68,8 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Tipo de Instrumento
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="http://localhost:8080/SysLuthieria/instrumento/cadastrar.jsp">Cadastrar</a></li>
-                      <li><a href="http://localhost:8080/SysLuthieria/instrumento/consultar.jsp">Consultar</a></li>
+                      <li><a href="http://localhost:8080/SysLuthieria/tipoinstrumento/cadastrar.jsp">Cadastrar</a></li>
+                      <li><a href="http://localhost:8080/SysLuthieria/tipoinstrumento/consultar.jsp">Consultar</a></li>
                     </ul>
                 </li>
                 

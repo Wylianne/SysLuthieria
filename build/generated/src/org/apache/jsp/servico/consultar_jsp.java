@@ -1,9 +1,9 @@
-package org.apache.jsp.produto;
+package org.apache.jsp.servico;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
-import AcessoDados.AcessoProduto;
+import AcessoDados.AcessoServico;
 import java.io.IOException;
 import Servlets.SrvLogin;
 import java.util.logging.Logger;
@@ -21,7 +21,7 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   static {
     _jspx_dependants = new java.util.ArrayList<String>(1);
-    _jspx_dependants.add("/produto/../inc/header.html");
+    _jspx_dependants.add("/servico/../inc/header.html");
   }
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
@@ -54,8 +54,6 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\r\n");
-      out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
@@ -164,13 +162,13 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </script>\r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write(" \r\n");
-      out.write("    <div style=\"margin-left: 10%; margin-right: 10%;\">\r\n");
-      out.write("        <h1>Lista de Produtos</h1><hr>\r\n");
-      out.write("              <table id=\"product\" align=\"center\" width=\"100%\" class=\"table table-striped table-bordered\" >\r\n");
-      out.write("                <thead><tr><th width=\"10%\">Excluir</th><th>Nome</th><th>Marca</th><th>Valor</th><th width=\"10%\">Editar</th></tr></thead>\r\n");
-      out.write("                    <tfoot><tr><th>Excluir</th><th>Nome</th><th>Marca</th><th>Valor</th><th>Editar</th></tr></tfoot><tbody>\r\n");
-      out.write("                \r\n");
+      out.write("    \r\n");
+      out.write("        <div class=\"container\">\r\n");
+      out.write("              <h1>Lista de Serviços</h1>\r\n");
+      out.write("               \r\n");
+      out.write("                <table id=\"product\" align=\"center\" width=\"100%\" class=\"table table-striped table-bordered\" >\r\n");
+      out.write("                <thead><tr><th width=\"10%\">Excluir</th><th>Nome</th> <th>Descrição</th><th>Valor</th><th>Prazo</th><th width=\"10%\">Editar</th></tr></thead>\r\n");
+      out.write("                    <tfoot><tr><th>Excluir</th><th>Nome</th> <th>Descrição</th><th>Valor</th><th>Prazo</th><th>Editar</th></tr></tfoot><tbody>\r\n");
       out.write("                    ");
 
      
@@ -179,24 +177,26 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
         
          try {
             ResultSet res;
-            AcessoProduto produto = new AcessoProduto();
+            AcessoServico servico = new AcessoServico();
             int id = 0;
             String nome = "";
             String marca = "";
             double valor = 0;
-            res = produto.Lista();
-
+            int prazo = 0;
+            res = servico.Lista();
             while (res.next()) {
                 id = res.getInt("id");
                 nome = res.getString("nome");
                 marca = res.getString("marca");
                 valor = res.getDouble("valor");
-                out.println("<tr><td align='center'><form method='post' action='../SrvExcluir'><input type='hidden' value='"+id+"' name='id_post'><input type='hidden' value='produto' name='src'>"
+                prazo = res.getInt("prazo");
+                out.println("<tr><td align='center'><form method='post' action='../SrvExcluir'><input type='hidden' value='"+id+"' name='id_post'><input type='hidden' value='servico' name='src'>"
                         + "<button type='submit' class='btn btn-default excluir'><span class='glyphicon glyphicon-trash'></span></button></form>"
                         + "</td><td>" + nome 
                         + "</td><td>" + marca
                         + "</td><td>" + valor
-                        + "<td align='center'><form method='post' action='editar.jsp'><input type='hidden' value='"+id+"' name='id_post'>"
+                        + "</td><td>" + prazo
+                        + "</td><td align='center'><form method='post' action='editar.jsp'><input type='hidden' value='"+id+"' name='id_post'>"
                         + "<button type='submit' class='btn btn-default'><span class='glyphicon glyphicon-pencil'></span></button></form></td>"
                         + "</tr>");
             }          
@@ -219,9 +219,7 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                $('#product').DataTable();});\r\n");
       out.write("        </script>\r\n");
       out.write("\r\n");
-      out.write("       \r\n");
-      out.write("        \r\n");
-      out.write("    </body>\r\n");
+      out.write("        </body>\r\n");
       out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

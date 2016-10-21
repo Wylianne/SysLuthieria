@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Documentos/NetBeansProjects/SysLuthieria/web/cliente/response.jsp</file>
-            <file>file:/D:/Documentos/NetBeansProjects/SysLuthieria/web/index.jsp</file>
+            <file>file:/D:/Documentos/NetBeansProjects/SysLuthieria/web/cliente/editar.jsp</file>
+            <file>file:/D:/Documentos/NetBeansProjects/SysLuthieria/src/java/AcessoDados/Conexao.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/SysLuthieria/web/cliente/consultar.jsp</file>
+            <file>file:/D:/Documentos/NetBeansProjects/SysLuthieria/web/inc/header.html</file>
+            <file>file:/D:/Documentos/NetBeansProjects/SysLuthieria/src/java/Servlets/SrvExcluir.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/SysLuthieria/src/java/AcessoDados/AcessoLogin.java</file>
         </group>
     </open-files>
 </project-private>

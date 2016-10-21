@@ -19,8 +19,8 @@
     <div style="margin-left: 10%; margin-right: 10%;">
         <h1>Lista de Produtos</h1><hr>
               <table id="product" align="center" width="100%" class="table table-striped table-bordered" >
-                <thead><tr><th>ID</th><th>Nome</th><th>Marca</th><th>Valor</th></tr></thead>
-                    <tfoot><tr><th>ID</th><th>Nome</th><th>Marca</th><th>Valor</th></tr></tfoot><tbody>
+                <thead><tr><th width="10%">Excluir</th><th>Nome</th><th>Marca</th><th>Valor</th><th width="10%">Editar</th></tr></thead>
+                    <tfoot><tr><th>Excluir</th><th>Nome</th><th>Marca</th><th>Valor</th><th>Editar</th></tr></tfoot><tbody>
                 
                     <%
      
@@ -41,10 +41,14 @@
                 nome = res.getString("nome");
                 marca = res.getString("marca");
                 valor = res.getDouble("valor");
-                out.println("<tr><td>" + id
+                out.println("<tr><td align='center'><form method='post' action='../SrvExcluir'><input type='hidden' value='"+id+"' name='id_post'><input type='hidden' value='produto' name='src'>"
+                        + "<button type='submit' class='btn btn-default excluir'><span class='glyphicon glyphicon-trash'></span></button></form>"
                         + "</td><td>" + nome 
-                         + "</td><td>" + marca
-                        + "</td><td>" + valor+"</tr>");
+                        + "</td><td>" + marca
+                        + "</td><td>" + valor
+                        + "<td align='center'><form method='post' action='editar.jsp'><input type='hidden' value='"+id+"' name='id_post'>"
+                        + "<button type='submit' class='btn btn-default'><span class='glyphicon glyphicon-pencil'></span></button></form></td>"
+                        + "</tr>");
             }          
             
         } catch (Exception ex) {

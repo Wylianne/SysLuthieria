@@ -4,13 +4,13 @@ JSP
 *S JSP
 *F
 + 0 consultar.jsp
-produto/consultar.jsp
+tipoinstrumento/consultar.jsp
 + 1 header.html
-produto/../inc/header.html
+tipoinstrumento/../inc/header.html
 *L
 5,12:57
 1#1,98:68
 16#0,10:165
-28,31:178
-58,18:209
+28,27:178
+54,15:205
 *E

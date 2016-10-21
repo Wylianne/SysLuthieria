@@ -18,8 +18,8 @@
               <h1>Lista de Serviços</h1>
                
                 <table id="product" align="center" width="100%" class="table table-striped table-bordered" >
-                <thead><tr><th width="10%">Excluir</th><th>Nome</th> <th>Descrição</th><th>Valor</th><th>Prazo</th></tr></thead>
-                    <tfoot><tr><th>Excluir</th><th>Nome</th> <th>Descrição</th><th>Valor</th><th>Prazo</th></tr></tfoot><tbody>
+                <thead><tr><th width="10%">Excluir</th><th>Nome</th> <th>Descrição</th><th>Valor</th><th>Prazo</th><th width="10%">Editar</th></tr></thead>
+                    <tfoot><tr><th>Excluir</th><th>Nome</th> <th>Descrição</th><th>Valor</th><th>Prazo</th><th>Editar</th></tr></tfoot><tbody>
                     <%
      
         
@@ -41,12 +41,14 @@
                 valor = res.getDouble("valor");
                 prazo = res.getInt("prazo");
                 out.println("<tr><td align='center'><form method='post' action='../SrvExcluir'><input type='hidden' value='"+id+"' name='id_post'><input type='hidden' value='servico' name='src'>"
-                        + "<button type='submit' class='btn btn-default excluir'><span class='glyphicon glyphicon-trash'></span></button></form></td>"
-                        + "<td>" + id
+                        + "<button type='submit' class='btn btn-default excluir'><span class='glyphicon glyphicon-trash'></span></button></form>"
                         + "</td><td>" + nome 
                         + "</td><td>" + marca
                         + "</td><td>" + valor
-                        + "</td><td>" + prazo+"</tr>");
+                        + "</td><td>" + prazo
+                        + "</td><td align='center'><form method='post' action='editar.jsp'><input type='hidden' value='"+id+"' name='id_post'>"
+                        + "<button type='submit' class='btn btn-default'><span class='glyphicon glyphicon-pencil'></span></button></form></td>"
+                        + "</tr>");
             }          
             
         } catch (Exception ex) {

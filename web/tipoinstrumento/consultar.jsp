@@ -20,8 +20,8 @@
         <h1>Consulta de Tipo de Instrumento</h1><hr>
             
         <table id="instruments" align="center" width="100%" class="table table-striped table-bordered" >
-            <thead><tr><th>Nome</th><th>Descriçao</th><th>Editar</th></tr></thead>
-                <tfoot><tr><th>Nome</th><th>Descriçao</th><th>Editar</th></tr></tfoot><tbody>
+            <thead><tr><th width="10%">Excluir</th><th>Nome</th><th>Descriçao</th><th>Editar</th></tr></thead>
+                <tfoot><tr><th>Excluir</th><th>Nome</th><th>Descriçao</th><th>Editar</th></tr></tfoot><tbody>
         <%
      
         
@@ -39,7 +39,9 @@
                 id = res.getInt("id");
                 nome = res.getString("nome");
                 descricao = res.getString("descricao");
-                out.println("<tr><td style='vertical-align: middle;'>" + nome
+                out.println("<tr><td align='center'><form method='post' action='../SrvExcluir'><input type='hidden' value='"+id+"' name='id_post'><input type='hidden' value='tipoinstrumento' name='src'>"
+                        + "<button type='submit' class='btn btn-default excluir'><span class='glyphicon glyphicon-trash'></span></button></form></td>"
+                        +"<td style='vertical-align: middle;'>" + nome
                         + "</td><td  style='vertical-align: middle;'>" + descricao 
                         + "</td><td align='center'><form method='post' action='editar.jsp'><input type='hidden' value='"+id+"'>"
                         + "<button type='submit' class='btn btn-default btn-mini'><span style='font-size:12px;' class='glyphicon glyphicon-pencil'></span></button></form></tr>");
