@@ -13,8 +13,9 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.io.PrintWriter"%>
 
-<%@include file="../inc/header.html" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="../inc/header.html" %>
  
     <div style="margin-left: 10%; margin-right: 10%;">
         <h1>Lista de Produtos</h1><hr>

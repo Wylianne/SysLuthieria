@@ -3,8 +3,9 @@
     Created on : 17/10/2016, 21:48:30
     Author     : victorcardoso
 --%>
-<%@include file="../inc/header.html" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="../inc/header.html" %>
     
         <div style="margin-left: 10%; margin-right: 10%;">
             <h1>Cadastrar Serviços</h1>

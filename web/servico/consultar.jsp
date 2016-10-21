@@ -11,8 +11,9 @@
 <%@page import="AcessoDados.AcessoLogin"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.io.PrintWriter"%>
-<%@include file="../inc/header.html" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="../inc/header.html" %>
     
         <div class="container">
               <h1>Lista de Serviços</h1>
@@ -30,20 +31,20 @@
             AcessoServico servico = new AcessoServico();
             int id = 0;
             String nome = "";
-            String marca = "";
+            String descricao = "";
             double valor = 0;
             int prazo = 0;
             res = servico.Lista();
             while (res.next()) {
                 id = res.getInt("id");
                 nome = res.getString("nome");
-                marca = res.getString("marca");
+                descricao = res.getString("descricao");
                 valor = res.getDouble("valor");
                 prazo = res.getInt("prazo");
                 out.println("<tr><td align='center'><form method='post' action='../SrvExcluir'><input type='hidden' value='"+id+"' name='id_post'><input type='hidden' value='servico' name='src'>"
                         + "<button type='submit' class='btn btn-default excluir'><span class='glyphicon glyphicon-trash'></span></button></form>"
                         + "</td><td>" + nome 
-                        + "</td><td>" + marca
+                        + "</td><td>" + descricao
                         + "</td><td>" + valor
                         + "</td><td>" + prazo
                         + "</td><td align='center'><form method='post' action='editar.jsp'><input type='hidden' value='"+id+"' name='id_post'>"

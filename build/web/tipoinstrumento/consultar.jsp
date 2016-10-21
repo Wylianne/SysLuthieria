@@ -13,8 +13,8 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.io.PrintWriter"%>
 
-<%@include file="../inc/header.html" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="../inc/header.html" %>
 
     <div style="margin-left: 10%; margin-right: 10%;">
         <h1>Consulta de Tipo de Instrumento</h1><hr>
@@ -43,7 +43,7 @@
                         + "<button type='submit' class='btn btn-default excluir'><span class='glyphicon glyphicon-trash'></span></button></form></td>"
                         +"<td style='vertical-align: middle;'>" + nome
                         + "</td><td  style='vertical-align: middle;'>" + descricao 
-                        + "</td><td align='center'><form method='post' action='editar.jsp'><input type='hidden' value='"+id+"'>"
+                        + "</td><td align='center'><form method='post' action='editar.jsp'><input type='hidden' value='"+id+"' name='id_post'>"
                         + "<button type='submit' class='btn btn-default btn-mini'><span style='font-size:12px;' class='glyphicon glyphicon-pencil'></span></button></form></tr>");
             }          
             

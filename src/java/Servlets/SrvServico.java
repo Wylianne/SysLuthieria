@@ -70,26 +70,37 @@ public class SrvServico extends HttpServlet {
         
         PrintWriter out = response.getWriter();
 
+        int id_post = 0;
         int id, prazo;
         String nome, descricao;
         double valor;
                 
-        nome = new String(request.getParameter("nome"));
-        descricao = new String(request.getParameter("descricao"));
+        nome = new String(request.getParameter("nome").getBytes("ISO-8859-1"),"UTF-8");
+        descricao = new String(request.getParameter("descricao").getBytes("ISO-8859-1"),"UTF-8");
         valor = Double.parseDouble(request.getParameter("valor"));
         prazo = Integer.parseInt(request.getParameter("prazo"));
+                
+        if (request.getParameter("id_post") != null){
+            id_post = Integer.parseInt(request.getParameter("id_post"));
+        }
         
         AcessoServico con = new AcessoServico();
         
+        String sql = "";
+        
         try {
+            if(id_post > 0){
+                sql = "UPDATE SERVICO SET nome = '"+nome+"', descricao = '"+descricao+"', valor = "+valor+", prazo = "+prazo+" WHERE id = "+id_post+";";
+            }else{
+                sql = "INSERT INTO servico (nome,descricao,valor,prazo) VALUES('"+nome+"', '"+descricao+"', "+valor+", "+prazo+");";
+            }
             
-            String sql = "INSERT INTO servico (nome,marca,valor,prazo) VALUES('"+nome+"', '"+descricao+"', "+valor+", "+prazo+");";
             PreparedStatement stmt = (PreparedStatement) con.Conectar().prepareStatement(sql);
             
             
             stmt.execute();
             
-            response.sendRedirect("servicos/consultar.jsp"); 
+            response.sendRedirect("servico/consultar.jsp"); 
             
          }catch (Exception e){
              out.println(e);

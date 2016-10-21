@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Wylianne
  */
-public class SrvInstrumento extends HttpServlet {
+public class SrvTipoInstrumento extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +38,10 @@ public class SrvInstrumento extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SrvInstrumento</title>");            
+            out.println("<title>Servlet SrvTipoInstrumento</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SrvInstrumento at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet SrvTipoInstrumento at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         } finally {
@@ -78,21 +78,32 @@ public class SrvInstrumento extends HttpServlet {
         
         PrintWriter out = response.getWriter();
         
+        int id_post = 0;
         String nome, descricao;
         nome = new String(request.getParameter("tipo").getBytes("ISO-8859-1"),"UTF-8");        
         descricao = new String(request.getParameter("descricao").getBytes("ISO-8859-1"),"UTF-8");
 
         
+        if (request.getParameter("id_post") != null){
+            id_post = Integer.parseInt(request.getParameter("id_post"));
+        }
+        
         AcessoTipoInstrumento con = new AcessoTipoInstrumento();
+        
+        String sql = "";
         try{
-
-            String sql = "INSERT INTO tipoinstrumento (nome,descricao) VALUES('"+nome+"', '"+descricao+"');";
+            if(id_post > 0){
+                sql = "UPDATE TIPOINSTRUMENTO SET nome = '"+nome+"', descricao = '"+descricao+"' WHERE id = "+id_post+";";
+            }else{
+                sql = "INSERT INTO tipoinstrumento (nome,descricao) VALUES('"+nome+"', '"+descricao+"');";
+            }
+            
             PreparedStatement stmt = (PreparedStatement) con.Conectar().prepareStatement(sql);
             
             
             stmt.execute();
             
-            response.sendRedirect("instrumento/consultar.jsp"); 
+            response.sendRedirect("tipoinstrumento/consultar.jsp"); 
             
         }catch (Exception e){
             out.println(e);

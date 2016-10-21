@@ -6,8 +6,9 @@
 
 <%@page import="java.sql.ResultSet"%>
 <%@page import="AcessoDados.AcessoCliente"%>
-<%@include file="../inc/header.html" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>        
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="../inc/header.html" %>      
         
     <%
         ResultSet res;
@@ -35,9 +36,9 @@
     %>
        
     <div style="margin-left: 10%; margin-right: 10%;">
-            <h1>Cadastrar Cliente <%= id_post%></h1>
+            <h1>Cadastrar Cliente</h1>
             <hr>
-            <form name="formCadastrarCliente" method="post" action="../SrvCliente" >
+            <form name="formEditarCliente" method="post" action="../SrvCliente" >
                 Nome<em>*</em> <input value="<%= nome%>" class="form-control" name="nome" type="text" minlength="4" required /></br>
                 Telefone<em>*</em> <input value="<%= telefone%>" class="form-control" name="telefone" type="text" pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$" title="Ex.: (99) 99999-9999" required />
                 <input type="hidden" name="id_post" value="<%= id_post%>" />

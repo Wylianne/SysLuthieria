@@ -77,18 +77,28 @@ public class SrvProduto extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         
+        int id_post = 0;
         String nome, marca;
         double valor;
         
-        nome = new String(request.getParameter("nome"));
-        marca = new String(request.getParameter("marca"));
+        nome = new String(request.getParameter("nome").getBytes("ISO-8859-1"),"UTF-8");
+        marca = new String(request.getParameter("marca").getBytes("ISO-8859-1"),"UTF-8");
         valor = Double.parseDouble(request.getParameter("valor"));
+        
+        if (request.getParameter("id_post") != null){
+            id_post = Integer.parseInt(request.getParameter("id_post"));
+        }
         
         AcessoProduto con = new AcessoProduto();
         
+        String sql = "";
         try{
-
-            String sql = "INSERT INTO PRODUTO (nome, marca, valor) VALUES('"+nome+"', '"+marca+"', "+valor+");";
+            if(id_post > 0){
+                sql = "UPDATE PRODUTO SET nome = '"+nome+"', marca = '"+marca+"', valor = "+valor+" WHERE id = "+id_post+";";
+            }else{
+                sql = "INSERT INTO PRODUTO (nome, marca, valor) VALUES('"+nome+"', '"+marca+"', "+valor+");";
+            }
+            
             PreparedStatement stmt = (PreparedStatement) con.Conectar().prepareStatement(sql);
             
             

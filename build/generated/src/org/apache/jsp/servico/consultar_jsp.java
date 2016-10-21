@@ -63,10 +63,11 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
       out.write("        <title>JSP Page</title>\r\n");
       out.write("        \r\n");
       out.write("        <!-- Latest compiled and minified CSS -->\r\n");
@@ -114,7 +115,7 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </ul>\r\n");
       out.write("                </li>\r\n");
       out.write("                <li id=\"servico\" class=\"dropdown\">\r\n");
-      out.write("                    <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">ServiÃ§os\r\n");
+      out.write("                    <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">Servi&ccedil;os\r\n");
       out.write("                    <span class=\"caret\"></span></a>\r\n");
       out.write("                    <ul class=\"dropdown-menu\">\r\n");
       out.write("                      <li><a href=\"http://localhost:8080/SysLuthieria/servico/cadastrar.jsp\">Cadastrar</a></li>\r\n");
@@ -161,7 +162,6 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            }\r\n");
       out.write("        </script>\r\n");
       out.write("\r\n");
-      out.write("\r\n");
       out.write("    \r\n");
       out.write("        <div class=\"container\">\r\n");
       out.write("              <h1>Lista de Serviços</h1>\r\n");
@@ -180,20 +180,20 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
             AcessoServico servico = new AcessoServico();
             int id = 0;
             String nome = "";
-            String marca = "";
+            String descricao = "";
             double valor = 0;
             int prazo = 0;
             res = servico.Lista();
             while (res.next()) {
                 id = res.getInt("id");
                 nome = res.getString("nome");
-                marca = res.getString("marca");
+                descricao = res.getString("descricao");
                 valor = res.getDouble("valor");
                 prazo = res.getInt("prazo");
                 out.println("<tr><td align='center'><form method='post' action='../SrvExcluir'><input type='hidden' value='"+id+"' name='id_post'><input type='hidden' value='servico' name='src'>"
                         + "<button type='submit' class='btn btn-default excluir'><span class='glyphicon glyphicon-trash'></span></button></form>"
                         + "</td><td>" + nome 
-                        + "</td><td>" + marca
+                        + "</td><td>" + descricao
                         + "</td><td>" + valor
                         + "</td><td>" + prazo
                         + "</td><td align='center'><form method='post' action='editar.jsp'><input type='hidden' value='"+id+"' name='id_post'>"

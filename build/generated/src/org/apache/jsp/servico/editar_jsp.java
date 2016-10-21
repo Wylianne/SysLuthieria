@@ -1,18 +1,12 @@
-package org.apache.jsp.tipoinstrumento;
+package org.apache.jsp.servico;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
-import AcessoDados.AcessoTipoInstrumento;
-import java.io.IOException;
-import Servlets.SrvLogin;
-import java.util.logging.Logger;
-import java.util.logging.Level;
-import AcessoDados.AcessoLogin;
+import AcessoDados.AcessoServico;
 import java.sql.ResultSet;
-import java.io.PrintWriter;
 
-public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class editar_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -21,7 +15,7 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   static {
     _jspx_dependants = new java.util.ArrayList<String>(1);
-    _jspx_dependants.add("/tipoinstrumento/../inc/header.html");
+    _jspx_dependants.add("/servico/../inc/header.html");
   }
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
@@ -59,16 +53,9 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
       out.write("        <title>JSP Page</title>\r\n");
       out.write("        \r\n");
       out.write("        <!-- Latest compiled and minified CSS -->\r\n");
@@ -116,7 +103,7 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </ul>\r\n");
       out.write("                </li>\r\n");
       out.write("                <li id=\"servico\" class=\"dropdown\">\r\n");
-      out.write("                    <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">ServiÃ§os\r\n");
+      out.write("                    <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">Servi&ccedil;os\r\n");
       out.write("                    <span class=\"caret\"></span></a>\r\n");
       out.write("                    <ul class=\"dropdown-menu\">\r\n");
       out.write("                      <li><a href=\"http://localhost:8080/SysLuthieria/servico/cadastrar.jsp\">Cadastrar</a></li>\r\n");
@@ -165,57 +152,65 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("    <div style=\"margin-left: 10%; margin-right: 10%;\">\n");
-      out.write("        <h1>Consulta de Tipo de Instrumento</h1><hr>\n");
-      out.write("            \n");
-      out.write("        <table id=\"instruments\" align=\"center\" width=\"100%\" class=\"table table-striped table-bordered\" >\n");
-      out.write("            <thead><tr><th width=\"10%\">Excluir</th><th>Nome</th><th>Descriçao</th><th>Editar</th></tr></thead>\n");
-      out.write("                <tfoot><tr><th>Excluir</th><th>Nome</th><th>Descriçao</th><th>Editar</th></tr></tfoot><tbody>\n");
-      out.write("        ");
+      out.write("    ");
 
-     
-        
-         response.setContentType("text/html;charset=UTF-8");
-        
-         try {
-            ResultSet res;
-            AcessoTipoInstrumento instrumento = new AcessoTipoInstrumento();
-            int id = 0;
-            String nome = "";
-            String descricao = "";
-            res = instrumento.Lista();
-
-            while (res.next()) {
-                id = res.getInt("id");
-                nome = res.getString("nome");
-                descricao = res.getString("descricao");
-                out.println("<tr><td align='center'><form method='post' action='../SrvExcluir'><input type='hidden' value='"+id+"' name='id_post'><input type='hidden' value='tipoinstrumento' name='src'>"
-                        + "<button type='submit' class='btn btn-default excluir'><span class='glyphicon glyphicon-trash'></span></button></form></td>"
-                        +"<td style='vertical-align: middle;'>" + nome
-                        + "</td><td  style='vertical-align: middle;'>" + descricao 
-                        + "</td><td align='center'><form method='post' action='editar.jsp'><input type='hidden' value='"+id+"' name='id_post'>"
-                        + "<button type='submit' class='btn btn-default btn-mini'><span style='font-size:12px;' class='glyphicon glyphicon-pencil'></span></button></form></tr>");
-            }          
+        ResultSet res;
+        AcessoServico servico = new AcessoServico();
+        int id = 0, prazo = 0;
+        String nome = "", descricao = "";
+        double valor = 0.0;
             
-        } catch (Exception ex) {
-            Logger.getLogger(SrvLogin.class.getName()).log(Level.SEVERE, null, ex);
+            
+        int id_post = Integer.parseInt(request.getParameter("id_post"));
+            
+        res = servico.BuscaExistente(id_post);
+        
+       boolean rs_isEmpty = !res.next();
+ 
+        if(!rs_isEmpty){
+            nome = res.getString("nome");
+            if(nome == null){nome = "";}
+            
+        
+            descricao = res.getString("descricao");
+            if(descricao == null){descricao = "";}
+            
+            prazo = res.getInt("prazo");
+            if (prazo == 0){prazo = 0;}
+            
+            valor = res.getInt("valor");
+            if (valor == 0){valor = 0;}
         }
+       
     
-         
       out.write("\n");
-      out.write("        </tbody></table></div>\n");
-      out.write("        <script src=\"//code.jquery.com/jquery-1.12.3.js\"></script>\n");
-      out.write("        <script src=\"https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js\"></script>\n");
-      out.write("        <script src=\"https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js\"></script>\n");
-      out.write("       \n");
-      out.write("       \n");
-      out.write("        \n");
-      out.write("        <script>\n");
-      out.write("            $(document).ready(function(){\n");
-      out.write("                $('#instruments').DataTable();});\n");
-      out.write("        </script>\n");
+      out.write("        <div style=\"margin-left: 10%; margin-right: 10%;\">\n");
+      out.write("            <h1>Cadastrar Serviços</h1>\n");
+      out.write("            <hr>\n");
+      out.write("          \n");
+      out.write("            <form name=\"formCadastrarCliente\" method=\"post\" action=\"../SrvServico\" >\n");
+      out.write("                Nome: <input value=\"");
+      out.print( nome);
+      out.write("\" class=\"form-control\" name=\"nome\" type=\"text\" minlength=\"4\" required /></br>\n");
+      out.write("                Descrição: <textarea class=\"form-control\" name=\"descricao\" required >");
+      out.print( descricao);
+      out.write("</textarea>\n");
+      out.write("                Valor: <input value=\"");
+      out.print( valor);
+      out.write("\" class=\"form-control\" name=\"valor\" type=\"tel\" title=\"Ex.: 1999.00\" pattern=\"[0-9]{1,5}.[0-9]{2}$\" required /></br>\n");
+      out.write("                Prazo: <input value=\"");
+      out.print( prazo);
+      out.write("\" class=\"form-control\" name=\"prazo\" type=\"tel\" pattern=\"[0-9]+$\" required /></br>\n");
+      out.write("                <input type=\"hidden\" name=\"id_post\" value=\"");
+      out.print( id_post);
+      out.write("\" />\n");
+      out.write("\n");
+      out.write("                <hr>\n");
+      out.write("                <button type=\"submit\" class=\"btn btn-primary\">Cadastrar</button>\n");
+      out.write("            </form>\n");
+      out.write("        </div>\n");
       out.write("    </body>\n");
-      out.write("</html>\n");
+      out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
