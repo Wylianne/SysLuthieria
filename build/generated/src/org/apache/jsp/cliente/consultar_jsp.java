@@ -65,17 +65,12 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <title>JSP Page</title>\n");
-      out.write("        <style>\n");
-      out.write("            td{\n");
-      out.write("                vertical-align: middle;\n");
-      out.write("            }\n");
-      out.write("        </style>\n");
+      out.write("        \n");
       out.write("        <!-- Latest compiled and minified CSS -->\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">\n");
       out.write("        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\n");
@@ -88,7 +83,17 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        \n");
       out.write("        <script src=\"//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\"></script>\n");
       out.write("        <script src=\"https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css\"></script>\n");
-      out.write("        \n");
+      out.write("        <style>\n");
+      out.write("            td{\n");
+      out.write("                vertical-align: middle;\n");
+      out.write("            }\n");
+      out.write("            \n");
+      out.write("            .excluir:hover, .excluir:focus, .excluir:active, .excluir.active, .open>.dropdown-toggle.excluir  {\n");
+      out.write("                color: #000;\n");
+      out.write("                background-color: red;\n");
+      out.write("                border-color: red; /*set the color you want here*/\n");
+      out.write("            }\n");
+      out.write("        </style>\n");
       out.write("        \n");
       out.write("    </head>\n");
       out.write("    <body>\n");
@@ -107,7 +112,7 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </ul>\n");
       out.write("                </li>\n");
       out.write("                <li id=\"servico\" class=\"dropdown\">\n");
-      out.write("                    <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">Serviços\n");
+      out.write("                    <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">ServiÃ§os\n");
       out.write("                    <span class=\"caret\"></span></a>\n");
       out.write("                    <ul class=\"dropdown-menu\">\n");
       out.write("                      <li><a href=\"http://localhost:8080/SysLuthieria/servicos/cadastrar.jsp\">Cadastrar</a></li>\n");
@@ -160,8 +165,8 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <h1>Consulta de Cliente</h1><hr>\n");
       out.write("            \n");
       out.write("        <table id=\"client\" align=\"center\" width=\"100%\" class=\"table table-striped table-bordered\" >\n");
-      out.write("            <thead><tr><th>Nome</th><th>Telefone</th><th>Instrumentos</th><th>Editar</th></tr></thead>\n");
-      out.write("                <tfoot><tr><th>Nome</th><th>Telefone</th><th>Instrumentos</th><th>Editar</th></tr></tfoot><tbody>\n");
+      out.write("            <thead><tr><th width=\"10%\">Excluir</th><th>Nome</th><th width=\"20%\">Telefone</th><th width=\"10%\">Instrumentos</th><th width=\"10%\">Editar</th></tr></thead>\n");
+      out.write("                <tfoot><tr><th>Excluir</th><th>Nome</th><th>Telefone</th><th>Instrumentos</th><th>Editar</th></tr></tfoot><tbody>\n");
       out.write("        ");
 
      
@@ -180,7 +185,9 @@ public final class consultar_jsp extends org.apache.jasper.runtime.HttpJspBase
                 id = res.getInt("id");
                 nome = res.getString("nome");
                 telefone = res.getString("telefone");
-                out.println("<tr><td style='vertical-align: middle;'>" + nome
+                out.println("<tr><td align='center'><form method='post' action='../SrvExcluir'><input type='hidden' value='"+id+"' name='id_post'><input type='hidden' value='cliente' name='src'>"
+                        + "<button type='submit' class='btn btn-default excluir'><span class='glyphicon glyphicon-trash'></span></button></form></td>"
+                        + "<td style='vertical-align: middle;'>" + nome
                         + "</td><td style='vertical-align: middle;'>" +  telefone
                         + "</td><td align='center'><form method='post' action='instrumento.jsp'><input type='hidden' value='"+id+"' name='id'>"
                         + "<button type='submit' class='btn btn-default'><span class='glyphicon glyphicon-search'></span></button></form></td>"

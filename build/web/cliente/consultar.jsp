@@ -20,8 +20,8 @@
         <h1>Consulta de Cliente</h1><hr>
             
         <table id="client" align="center" width="100%" class="table table-striped table-bordered" >
-            <thead><tr><th>Nome</th><th>Telefone</th><th>Instrumentos</th><th>Editar</th></tr></thead>
-                <tfoot><tr><th>Nome</th><th>Telefone</th><th>Instrumentos</th><th>Editar</th></tr></tfoot><tbody>
+            <thead><tr><th width="10%">Excluir</th><th>Nome</th><th width="20%">Telefone</th><th width="10%">Instrumentos</th><th width="10%">Editar</th></tr></thead>
+                <tfoot><tr><th>Excluir</th><th>Nome</th><th>Telefone</th><th>Instrumentos</th><th>Editar</th></tr></tfoot><tbody>
         <%
      
         
@@ -39,7 +39,9 @@
                 id = res.getInt("id");
                 nome = res.getString("nome");
                 telefone = res.getString("telefone");
-                out.println("<tr><td style='vertical-align: middle;'>" + nome
+                out.println("<tr><td align='center'><form method='post' action='../SrvExcluir'><input type='hidden' value='"+id+"' name='id_post'><input type='hidden' value='cliente' name='src'>"
+                        + "<button type='submit' class='btn btn-default excluir'><span class='glyphicon glyphicon-trash'></span></button></form></td>"
+                        + "<td style='vertical-align: middle;'>" + nome
                         + "</td><td style='vertical-align: middle;'>" +  telefone
                         + "</td><td align='center'><form method='post' action='instrumento.jsp'><input type='hidden' value='"+id+"' name='id'>"
                         + "<button type='submit' class='btn btn-default'><span class='glyphicon glyphicon-search'></span></button></form></td>"

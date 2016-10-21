@@ -20,6 +20,10 @@
         <servlet-name>SrvServico</servlet-name>
         <servlet-class>Servlets.SrvServico</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SrvExcluir</servlet-name>
+        <servlet-class>Servlets.SrvExcluir</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SrvLogin</servlet-name>
         <url-pattern>/SrvLogin</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>SrvServico</servlet-name>
         <url-pattern>/SrvServico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SrvExcluir</servlet-name>
+        <url-pattern>/SrvExcluir</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
